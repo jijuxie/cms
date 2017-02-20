@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+看看输出了什么 <br/>
+{$name}
+<!--原样输出标签-->
+{literal}
+Hello,{$name}！
+{/literal}
+
+<!--包含文件-->
+{include file="public/header" /} // 包含头部模版header
+{include file="public/menu" /} // 包含菜单模版menu
+{include file="blue/public/menu" /} // 包含blue主题下面的menu模版
+<!--各种标签-->
+<!--循环输出 offset是从那一条数据算起，length是一共记录多少条 mod是为数据添加一个字符段像报数一样
+ empty当没有数据时显示$empty
+ key是循环变量不设置key则默认循环变量为$i-->
+{volist name="list" id="vo" offset="5" length='10' mod="5" empty="$empty" key='k'}
+{$k}{$vo.id}:{$vo.name}<br/>
+{$vo.name}
+{eq name="mod" value="4"}<br/>{/eq}
+{/volist}
+<!--foreach key定义索引-->
+{foreach $list as $vo key='k'}
+{$vo.id}:{$vo.name}
+{/foreach}
+<!--for标签 comparison的默认1值为lt name默认值为i step默认值为1-->
+{for start="开始值" end="结束值" comparison="lt" step="步进值" name="循环变量名" }
+{$i}
+{/for}
+
+<!--比较标签标签
+eq或者 equal	等于
+neq 或者notequal	不等于
+gt	大于
+egt	大于等于
+lt	小于
+elt	小于等于
+heq	恒等于
+nheq	不恒等于-->
+{eq name="name" value="value"}
+相等
+{else/}
+不相等
+{/eq}
+
+
+<!--条件判断标签-->
+<!--switch   case的值可以使用条件用|分割开 case的值可以用变量-->
+{switch name="变量" }
+{case value="值1" break="0或1"}输出内容1{/case}
+{case value="值2"}输出内容2{/case}
+{default /}默认情况
+{/switch}、
+<!--if-->
+{if condition="($name == 1) OR ($name > 100) "} value1
+{elseif condition="$name eq 2"/}value2
+{else /} value3
+{/if}
+<!--范围标签-->
+<!--在某个范围-->
+{in name="id" value="1,2,3"}
+id在范围内
+{/in}
+<!--不在某个范围-->
+{notin name="id" value="1,2,3"}
+id不在范围内
+{/notin}
+<!--混合用法-->
+{in name="id" value="1,2,3"}
+id在范围内
+{else/}
+id不在范围内
+{/in}
+<!--between支持字母判断-->
+{between name="id" value="1,10"}
+输出内容1
+{/between}
+{notbetween name="id" value="1,10"}
+输出内容2
+{/notbetween}
+{between name="id" value="1,10"}
+输出内容1
+{else/}
+输出内容2
+{/between}
+<!--判断定义标签-->
+{present name="name"}
+name已经赋值
+{else /}
+name还没有赋值
+{/present}
+<!--判断值为空标签-->
+{empty name="name"}
+name为空
+{else /}
+name不为空
+{/empty}
+<!--判断常亮是否定义标签-->
+{defined name="NAME"}
+NAME常量已经定义
+{else /}
+NAME常量未定义
+{/defined}
+
+
+<!--加载静态资源文件的标签支持加载多个，-->
+{load href="/static/js/common.js,/static/css/style.css" /}
+<!--原生php-->
+{php}echo 'Hello,world!';{/php}
+</body>
+</html>

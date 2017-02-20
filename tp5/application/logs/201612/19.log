@@ -1,0 +1,70 @@
+[ 2016-12-19T19:52:31+08:00 ] ::1 ::1 GET /index/uselog/index
+[ log ] localhost/index/uselog/index [运行时间：0.543769s][吞吐率：1.84req/s] [内存消耗：2,710.59kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp\www\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'uselog',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'Phpstorm-6e5f331c=8891b9a8-d69b-416f-9e33-27382b1195fc; Huiskin=blue; Hm_lvt_080836300300be57b7f34f4b3e97d911=1481416878,1481416961',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+[ info ] [ RUN ] app\index\controller\Uselog->index[ D:\wamp\www\tp5\application\index\controller\Uselog.php ]
+[ notice ] 测试日志信息
+
+---------------------------------------------------------------
+[ 2016-12-19T19:52:31+08:00 ] ::1 ::1 GET /index/uselog/index
+[ log ] localhost/index/uselog/index [运行时间：0.548552s][吞吐率：1.82req/s] [内存消耗：2,708.99kb] [文件加载：44]
+[ notice ] 测试日志信息，这是警告级别，并且实时写入
+
+---------------------------------------------------------------
+[ 2016-12-19T19:52:34+08:00 ] ::1 ::1 GET /index/uselog/index
+[ log ] localhost/index/uselog/index [运行时间：0.020669s][吞吐率：48.38req/s] [内存消耗：2,710.70kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp\www\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'uselog',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Phpstorm-6e5f331c=8891b9a8-d69b-416f-9e33-27382b1195fc; Huiskin=blue; Hm_lvt_080836300300be57b7f34f4b3e97d911=1481416878,1481416961',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+[ info ] [ RUN ] app\index\controller\Uselog->index[ D:\wamp\www\tp5\application\index\controller\Uselog.php ]
+[ notice ] 测试日志信息
+
+---------------------------------------------------------------
+[ 2016-12-19T19:52:34+08:00 ] ::1 ::1 GET /index/uselog/index
+[ log ] localhost/index/uselog/index [运行时间：0.024982s][吞吐率：40.03req/s] [内存消耗：2,709.06kb] [文件加载：44]
+[ notice ] 测试日志信息，这是警告级别，并且实时写入
+
+---------------------------------------------------------------
