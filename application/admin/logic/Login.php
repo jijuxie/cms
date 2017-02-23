@@ -7,6 +7,8 @@
  */
 namespace app\admin\logic;
 
+use app\admin\model\User;
+use think\Cookie;
 use think\Loader;
 use think\Model;
 use think\Request;
@@ -31,34 +33,42 @@ class Login extends Model
         redirect('admin/index/index');
     }
 
-
+//验证加写入session与cookie
     public function testAll()
     {
-        $reguest = Request::instance();
-        $data=[
-            'name'=>$reguest->param('name'),
-            'password'=>$reguest->param('password'),
-            'captcha'=>$reguest->param('captcha')
+        $validate = Loader::validate('User');
+        $request = Request::instance();
+        $data = [
+            'name' => $request->param('name'),
+            'password' => $request->param('password'),
+            'captcha' => $request->param('captcha')
         ];
-        $validate=Loader::validate('user');
-        if(!$validate->check($data)){
-            dump($validate->getError());
-        }
-        if ($reguest->has('name') && $reguest->has('password')) {
 
+        if (!$validate->check($data)) {
+            $errorJson = [
+                'code' => 1,
+                'message' => $validate->getError()
+            ];
+
+            return $errorJson;
         } else {
-            $error=Loader::model('error','service');
-            $ajaxArray = array('code'=>1,'message'=>$error->getMessage(1),'date'=>'');
-            return;
+            $successJson = [
+                'code' => 0,
+                'message' => '验证成功立刻跳转'
+            ];
+            return $successJson;
+
         }
     }
 
     public function isLoginTrue()
     {
         Session::prefix('admin');
-        $sessionUserId = Session::get('userId');
-        if ($sessionUserId != 0) {
-            $this->toAdmin();
+        $sessionUserId = Session::get('userid');
+        Cookie::prefix('admin');
+        $cookieUserId = Cookie::get('userid');
+        if ($sessionUserId != 0 && $sessionUserId == $cookieUserId && $cookieUserId != 0) {
+
             return true;
         } else {
             return false;

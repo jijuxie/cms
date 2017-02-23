@@ -15,8 +15,5 @@ return [
         // 还可以定义其它的HTTP status
         401 => APP_PATH . '401.html',
     ],
-    'error_code' => [
-        0 => "OK",
-        1=>'error',
-    ],
+
 ];

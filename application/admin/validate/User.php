@@ -5,7 +5,7 @@
  * Date: 2016/12/19
  * Time: 20:37
  */
-namespace app\index\validate;
+namespace app\admin\validate;
 
 use think\Validate;
 
@@ -13,27 +13,30 @@ class User extends Validate
 {
     //同一个字符段的验证可以设置多个但是只会报一个错误
 //定义此数据可以替代message
-//['name','require|max:25','名称必须|名称最多不能超过25个字符'],
-//['age','number|between:1,120','年龄必须是数字|年龄必须在1~120之间'],
-//['email','email','邮箱格式错误']
+
     protected $rule = [
         'name' => 'require|checkName',
-        'password' => 'request',
-        'captcha' => 'request|captcha',
+        'password' => 'require|checkPassword',
+        'captcha' => 'require|captcha',
     ];
 //    根据验证规则对应验证信息
     protected $message = [
-        'name.require' => '名称必须jijuxie',
-        'name.max' => '名称最多不能超过25个字符',
-        'age.number' => '年龄必须是数字',
-        'age.between' => '年龄只能在1-120之间',
-        'email' => '邮箱格式错误',
+        'name.require' => '名称必须',
+        'password.require' => '密码必须',
+        'captcha.require'=>'验证码必须',
+        'captcha.captcha'=>'验证码验证出错'
     ];
 
-    protected function checkName($value, $data)
+    protected function checkName($value)
     {
         $user = new \app\admin\model\User();
-        $user->password=
+        return $user::get(['user_name' => $value]) != false ? true : '用户名不存在';
+    }
+
+    protected function checkPassword($value,$rule, $data)
+    {
+        $user = new \app\admin\model\User();
+        return $user::get(['user_name' => $data['name'], 'user_password' => md5($value)]) != false ? true : '用户名或者验证码不正确';
     }
 //    // 自定义验证规则$value是传过来的值，$rule是对应：值$data是传过来一个数组
 //    protected function checkName($value, $rule, $data)
@@ -44,10 +47,10 @@ class User extends Validate
 //    }
     //场景定义，在某个场景时只验证定义的字段
     //也可以定义不同场景时不同的验证方式
-    protected $scene = [
-        'edit' => ['name', 'age'],
-        'reset' => ['name', 'age' => 'require|number|between:1,120'],
-    ];
+//    protected $scene = [
+//        'edit' => ['name', 'age'],
+//        'reset' => ['name', 'age' => 'require|number|between:1,120'],
+//    ];
     //内置规则
     protected $myrule = [
         'name' => 'require',//验证字段唯一

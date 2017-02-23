@@ -44,41 +44,36 @@
 
             </div>
 
-            <form class="am-form tpl-form-line-form" action="/" method="post">
+            <form class="am-form tpl-form-line-form" action="/admin/login/ajax_check_login/" method="post" id="form">
                 <div class="am-form-group">
-                    <label for="user-name">
+                    <label for="name">
                         账户：
                     </label>
-                    <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入账号">
+                    <input type="text" class="tpl-form-input" name="name" id="name" placeholder="请输入账号">
 
                 </div>
 
                 <div class="am-form-group">
-                    <label for="user-password">密码：</label>
-                    <input type="password" class="tpl-form-input" id="user-password" placeholder="请输入密码">
+                    <label for="password">密码：</label>
+                    <input type="password" class="tpl-form-input" name="password" id="password" placeholder="请输入密码">
 
                 </div>
                 <div class="am-form-group">
 
                     <div class="am-u-sm-6" style="padding-left:0;padding-right:20px;">
-                        <label for="user-captch">验证码：</label>
-                        <input type="text" class="tpl-form-input" id="user-captch" placeholder="请输入验证码">
+                        <label for="captch">验证码：</label>
+                        <input type="text" class="tpl-form-input" name="captcha" id="captch" placeholder="请输入验证码">
                     </div>
                     <div class="am-u-sm-6" style="padding: 0">
                         <!--验证码点击刷新-->
-                        <img class="am-img-responsive" src="{:captcha_src()}" alt="点击更换" title="点击更换"
-                             onclick="this.src='{:captcha_src(rand())}'"/>
+                        <img class="am-img-responsive" id="captch_img" src="{:captcha_src()}" alt="点击更换" title="点击更换"/>
                     </div>
-
                 </div>
-
-
                 <div class="am-form-group">
-
                     <button type="button"
-                            class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">提交
+                            class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn"
+                            id="submit">提交
                     </button>
-
                 </div>
             </form>
         </div>
@@ -86,7 +81,54 @@
 </div>
 <script src="/static/assets/js/amazeui.min.js"></script>
 <script src="/static/assets/js/app.js"></script>
+<!--引入layer-->
+<script src="/static/layer/layer/layer.js"></script>
+<script src="/static/layer/putLayer.js"></script>
+<script>
 
+    $(document).ready(function () {
+        var captcha_img_url = "{:captcha_src();}";
+        var form = $('#form');
+        var submit = $('#submit');
+        var captcha_img = $('#captch_img');
+
+        function change_captcha_img() {
+            var local = captcha_img_url + '?id=' + Math.random();
+            captcha_img.attr('src', local);
+        }
+
+        captcha_img.click(function () {
+            change_captcha_img();
+        });
+
+
+        submit.click(function () {
+            var name = $('#name').val();
+            var password = $('#password').val();
+            var captcha = $('#captch').val();
+            var input_data = {
+                name: name,
+                password: password,
+                captcha: captcha
+            };
+
+            $.post('/admin/login/ajax_check_login/', input_data, function (data, status) {
+                change_captcha_img();
+                if (data.code == 0) {
+                    putalert.success('成功了：' + data.message + '正在跳转');
+
+                    setTimeout(function () {
+                        window.location.href = '/admin/index/index/';
+                    }, 3000);
+
+                } else {
+                    putalert.error('登录失败:失败原因是：' + data.message);
+                }
+            });
+        });
+
+    })
+</script>
 </body>
 
 </html>

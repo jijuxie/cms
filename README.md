@@ -1,4 +1,4 @@
-ThinkPHP 5.0
+jijuxie CMS 基于ThinkPHP 5.0
 ===============
 
 [![Total Downloads](https://poser.pugx.org/topthink/think/downloads)](https://packagist.org/packages/topthink/think)
@@ -127,3 +127,5 @@ All rights reserved。
 ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
 
 更多细节参阅 [LICENSE.txt](LICENSE.txt)
+#正文（cms）
+为贯彻落实tp5的学习，故做一个tp5的小型cms系统

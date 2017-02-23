@@ -12,12 +12,5 @@ use think\Model;
 
 class Error extends Model
 {
-/*
- * 返回醋无代码对应错误message
- */
-    public function getMessage($error = 0)
-    {
-        $error_code=Config::get('error_code');
-        return $error_code[$error];
-    }
+
 }
