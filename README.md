@@ -30,7 +30,7 @@ ThinkPHP5在保持快速开发和大道至简的核心理念不变的同时，PH
 
 详细开发文档参考 [ThinkPHP5完全开发手册](http://www.kancloud.cn/manual/thinkphp5)
 
-## 目录结构
+## cms目录结构
 
 初始的目录结构如下：
 
@@ -38,6 +38,13 @@ ThinkPHP5在保持快速开发和大道至简的核心理念不变的同时，PH
 www  WEB部署目录（或者子目录）
 ├─application           应用目录
 │  ├─common             公共模块目录（可以更改）
+│  ├─admin              后台目录
+│  │  ├─config.php      模块配置文件
+│  │  ├─common.php      模块函数文件
+│  │  ├─controller      控制器目录
+│  │  ├─model           模型目录
+│  │  ├─view            视图目录
+│  │  └─ ...            更多类库目录
 │  ├─module_name        模块目录
 │  │  ├─config.php      模块配置文件
 │  │  ├─common.php      模块函数文件
@@ -111,21 +118,42 @@ www  WEB部署目录（或者子目录）
 ### 数据表和字段
 *   数据表和字段采用小写加下划线方式命名，并注意字段名不要以下划线开头，例如 `think_user` 表和 `user_name`字段，不建议使用驼峰和中文作为数据表字段命名。
 
-## 参与开发
-请参阅 [ThinkPHP5 核心框架包](https://github.com/top-think/framework)。
+
+#正文（cms）
+为贯彻落实tp5的学习，故做一个tp5的小型cms系统
+####主体框架搭建完成       -年-月-日
+####登录功能实现           -年-月-日 
+####登录功能实现某些逻辑功能-年-月-日
+登录使用ajax回调更亲民。
+
+验证name password 与验证码，多重防护。
+
+layer弹窗提示醒目提醒。
+
+amazeUI友好界面。
+
+登录后在进入登录页面自动跳转到主页面。
+
+登录时间锁，超出一定时间自动退登更安全。
+
+除了登录页面外所有页面都验证登录信息，更安全。
+
+####主界面搭建完成17年2月25日
+使用amazeUI，并且主体使用了其内部的一个后台模板。
+
+拆分amazeUI，去除所有非关键元素，保留，头部，左侧边栏，右侧样式转换按钮，
+
+将原有的单页面形式改成了iframe内部页面调用页面组成形式。
+
+添加js修正原有的去除原先在iframe部分的内容存在时，左侧栏能够正常根据屏幕大小回缩，但是去除原有部分后不能回缩的bug。
+
+添加js使得按钮可以改变iframe的src。
 
 ## 版权信息
 
-ThinkPHP遵循Apache2开源协议发布，并提供免费使用。
+本程序仅提供参照和学习之用，禁止私自转载使用。（虽然你用了我也不知道）
+码名：jijuxie,zp.
 
-本项目包含的第三方源码和二进制文件之版权信息另行标注。
+邮箱：1215627764@qq.com
 
-版权所有Copyright © 2006-2016 by ThinkPHP (http://thinkphp.cn)
-
-All rights reserved。
-
-ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
-
-更多细节参阅 [LICENSE.txt](LICENSE.txt)
-#正文（cms）
-为贯彻落实tp5的学习，故做一个tp5的小型cms系统
+个人博客 [岚小站-张鹏的个人博客](https://www.lanxiaozhan.cn)。
