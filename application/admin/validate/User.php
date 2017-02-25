@@ -7,6 +7,7 @@
  */
 namespace app\admin\validate;
 
+
 use think\Validate;
 
 class User extends Validate
@@ -30,13 +31,14 @@ class User extends Validate
     protected function checkName($value)
     {
         $user = new \app\admin\model\User();
+
         return $user::get(['user_name' => $value]) != false ? true : '用户名不存在';
     }
 
     protected function checkPassword($value,$rule, $data)
     {
         $user = new \app\admin\model\User();
-        return $user::get(['user_name' => $data['name'], 'user_password' => md5($value)]) != false ? true : '用户名或者验证码不正确';
+        return $user::get(['user_name' => $data['name'], 'user_password' => md5($value)]) != false ? true : '用户名或者密码不正确';
     }
 //    // 自定义验证规则$value是传过来的值，$rule是对应：值$data是传过来一个数组
 //    protected function checkName($value, $rule, $data)

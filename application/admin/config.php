@@ -15,5 +15,6 @@ return [
         // 还可以定义其它的HTTP status
         401 => APP_PATH . '401.html',
     ],
-
+    //不使用程序多少时间后退登
+    'use_limit_time' => '3600'
 ];
