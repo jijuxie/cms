@@ -24,6 +24,7 @@ class Login extends Controller
             $this->redirect('admin/index/index');
             return true;
         } else {
+           
             return $this->fetch();
         }
 

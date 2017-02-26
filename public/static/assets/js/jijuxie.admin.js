@@ -6,8 +6,11 @@ $(document).ready(function () {
     function screenBigOpen() {
 
         if ($.AMUI.fullscreen.enabled) {
-            // putmsg.animal('本浏览器支持全屏');
             $.AMUI.fullscreen.toggle();
+            $('#body').css('height',window.outerHeight);
+
+
+
         } else {
             putmsg.animal('本浏览器不支持全屏');
         }
@@ -20,6 +23,7 @@ $(document).ready(function () {
     function changeIframeSrc(url) {
         $('#main_iframe').attr('src', url);
     }
+
     $(".jijuxie_iframe_menu").click(function () {
         alert($(this).attr('data-change-url'));
         changeIframeSrc($(this).attr('data-change-url'));

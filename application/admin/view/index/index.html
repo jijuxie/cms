@@ -1,7 +1,7 @@
 {include file='public/_head'}
-<body data-type="index" style="overflow: hidden">
+<body id="body"  data-type="index" style="overflow: hidden;height:100%;">
 <script src="/static/assets/js/theme.js"></script>
-<div class="am-g tpl-g">
+<div class="am-g tpl-g" style="height:100%;">
     <!-- 头部 -->
     <header>
         <!-- logo -->
@@ -173,58 +173,40 @@
                 </div>
                 <span class="user-panel-logged-in-text">
               <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
-              admin
+              {$user_name}
           </span>
                 <a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
             </div>
         </div>
         <!-- 菜单 -->
         <ul class="sidebar-nav">
+
             <li class="sidebar-nav-heading">菜单 <span class="sidebar-nav-heading-info"> menu</span></li>
+
+            {foreach name='menu' item='vo'}
             <li class="sidebar-nav-link">
                 <a href="javascript:;" class="sidebar-nav-sub-title">
-                    <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表
+                    <i class="{$vo.jijuxie_icon_class} sidebar-nav-link-logo"></i> {$vo.jijuxie_name}
                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                 </a>
+                {foreach name="vo['children']" item='voo'}
                 <ul class="sidebar-nav sidebar-nav-sub">
                     <li class="sidebar-nav-link">
-                        <a href="javascript:;" class="jijuxie_iframe_menu" data-change-url="/admin/website/index2">
-                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表
+                        <a href="javascript:;" class="jijuxie_iframe_menu"
+                           data-change-url="/admin/{$vo.jijuxie_con}/{$voo.act}">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> {$voo.name}
                         </a>
                     </li>
                 </ul>
+                {/foreach}
             </li>
-            <li class="sidebar-nav-link">
-                <a href="javascript:;" class="sidebar-nav-sub-title">
-                    <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表
-                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
-                </a>
-                <ul class="sidebar-nav sidebar-nav-sub">
-                    <li class="sidebar-nav-link">
-                        <a href="javascript:;">
-                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="sidebar-nav-link">
-                <a href="javascript:;" class="sidebar-nav-sub-title">
-                    <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表
-                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
-                </a>
-                <ul class="sidebar-nav sidebar-nav-sub">
-                    <li class="sidebar-nav-link">
-                        <a href="javascript:;">
-                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            {/foreach}
         </ul>
     </div>
     <!-- 内容区域 -->
     <div class="tpl-content-wrapper" id="main">
-        <iframe id="main_iframe" src="/admin/website/index" style="margin: 0;width:100%; border-top: 1px solid #eee; border-right:1px solid #eee;"></iframe>
+        <iframe id="main_iframe" src="/admin/website/index"
+                style="margin: 0;width:100%; border-top: 1px solid #eee; border-right:1px solid #eee;"></iframe>
         <script>
             $(document).ready(function () {
                 function changeH() {
@@ -233,8 +215,11 @@
                 }
                 changeH();
                 function changeIframeSrc(url) {
-                    $('.main_iframe').attr('src',url);
+                    $('.main_iframe').attr('src', url);
                 }
+                $('.tpl-big-open-button').click(function () {
+                        changeH();
+                });
             })
         </script>
 

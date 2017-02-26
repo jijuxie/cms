@@ -5,6 +5,7 @@ namespace app\admin\controller;
 use app\admin\logic\Login;
 use think\Config;
 use think\Controller;
+use think\Db;
 use think\Loader;
 use think\Request;
 use think\Session;
@@ -25,11 +26,13 @@ class Index extends Controller
             return false;
         }
     }
-
-
     public
     function index()
     {
+        $menu=Config::get('menu');
+        $userName=Db::table('cms_user')->where('id',Session::get('userid'))->value('user_name');
+        $this->assign('menu',$menu);
+        $this->assign('user_name',$userName);
         return $this->fetch();//渲染模板有两种方式    return $view();
     }
 

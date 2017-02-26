@@ -17,7 +17,6 @@ use think\Session;
 
 class Login extends Model
 {
-
     protected function initialize()
     {
         parent::initialize();
