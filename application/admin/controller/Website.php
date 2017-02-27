@@ -13,10 +13,12 @@ class Website extends Controller
 {
 
     public function _initialize(){
+        $this->assign('menu',Config('menu'));
         parent::_initialize();
     }
     public function index(){
-        echo 'index';
+
+        return $this->fetch();
     }
     public function index2(){
         echo 'index2';

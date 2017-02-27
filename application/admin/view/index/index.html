@@ -1,7 +1,7 @@
 {include file='public/_head'}
-<body id="body"  data-type="index" style="overflow: hidden;height:100%;">
+<body data-type="index">
 <script src="/static/assets/js/theme.js"></script>
-<div class="am-g tpl-g" style="height:100%;">
+<div class="am-g tpl-g">
     <!-- 头部 -->
     <header>
         <!-- logo -->
@@ -205,20 +205,26 @@
     </div>
     <!-- 内容区域 -->
     <div class="tpl-content-wrapper" id="main">
-        <iframe id="main_iframe" src="/admin/website/index"
-                style="margin: 0;width:100%; border-top: 1px solid #eee; border-right:1px solid #eee;"></iframe>
+        <!--主页面页面标题和描述-->
+
+
+                        <iframe id="main_iframe" src="/admin/website/index"
+                                style="margin: 0;width:100%;"></iframe>
+
         <script>
             $(document).ready(function () {
                 function changeH() {
                     var height = parseInt($('#main').css('height'));
                     $('#main_iframe').css('height', height + 'px');
                 }
+
                 changeH();
                 function changeIframeSrc(url) {
                     $('.main_iframe').attr('src', url);
                 }
+
                 $('.tpl-big-open-button').click(function () {
-                        changeH();
+                    changeH();
                 });
             })
         </script>
@@ -229,7 +235,6 @@
 <script src="/static/assets/js/amazeui.datatables.min.js"></script>
 <script src="/static/assets/js/dataTables.responsive.min.js"></script>
 <script src="/static/assets/js/app.js"></script>
-
 <script>
     //增强原有功能，修复原有左边栏有些情况不能回缩的bug
     autoLeftNav();

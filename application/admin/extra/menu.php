@@ -9,8 +9,8 @@ return
             'children' => [
                 [
                     'act' => 'index',
-                    'name' => '网站设置一',
-                    'des' => '一这里就是这个页面的描述',
+                    'name' => '网站信息',
+                    'des' => '网站现在的状态',
                 ],
                 [
                     'act' => 'index2',
