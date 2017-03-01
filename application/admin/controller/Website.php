@@ -11,16 +11,21 @@ use think\Controller;
 
 class Website extends Controller
 {
+    public function _initialize()
+    {
 
-    public function _initialize(){
-        $this->assign('menu',Config('menu'));
+        $this->assign('menu', Config('menu'));
         parent::_initialize();
     }
-    public function index(){
+
+    public function index()
+    {
 
         return $this->fetch();
     }
-    public function index2(){
+
+    public function index2()
+    {
         echo 'index2';
     }
 }
