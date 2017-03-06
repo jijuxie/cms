@@ -1,0 +1,77 @@
+{include file='public/_head'}
+{include file='public/_pageHeader'}
+<!--主要内容-->
+
+<div class="am-g">
+    <div class="am-u-sm-8 am-u-sm-offset-2">
+        <form action="" method="post" class="am-form-inline">
+            <div class="am-form-group am-fl">
+                <label for="limit_type">
+                    按权限类型查找
+                </label>
+                <select name="limitType" id="limit_type">
+                    <option value="0">主父权限</option>
+                    <option value="1">方法权限</option>
+                    <option value="2">回调权限</option>
+                </select>
+            </div>
+            <div class="am-form-group am-fr">
+                <input type="submit" class="am-btn  am-btn-success am-btn-sm" value="查找">
+            </div>
+        </form>
+        
+    </div>
+</div>
+<div class="am-g">
+    <div class="am-u-sm-10 am-u-sm-offset-1">
+        <table class="am-table">
+            <thead>
+            <tr>
+                <th>权限名称</th>
+                <th>权限类型</th>
+                <th>父权限</th>
+                <th>对应控制器</th>
+                <th>对应方法名</th>
+                <th>是否开放</th>
+                <th>
+                    操作
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $limitList as $vo }
+            <tr>
+                <td>{$vo.limit_name}</td>
+                <td>{$vo.type_name}</td>
+                <td>{$vo.fid}</td>
+                <td>{$vo.action}</td>
+                <td>{$vo.controller}</td>
+                <td>{$vo.if_open}</td>
+                <td>
+                    <form action="/" method="post" class="am-form am-inline">
+                        <button class="am-btn am-btn-secondary am-btn-xs">编辑</button>
+                    </form>
+                    <form action="/" method="post" class="am-form am-inline">
+                        <button class="am-btn am-btn-danger am-btn-xs">删除</button>
+                    </form>
+                </td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="am-g">
+
+    {$limitList->render()}
+
+</div>
+<script>
+    $(document).ready(function () {
+        var the_page=$('.pagination');
+        the_page.addClass('am-pagination am-pagination-centered');
+        the_page.children('.active').addClass('am-active');
+        the_page.children('.disabled').addClass('am-disabled');
+    })
+</script>
+{include file='public/_pageFooter'}
