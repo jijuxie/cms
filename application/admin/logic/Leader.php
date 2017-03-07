@@ -10,6 +10,7 @@ namespace app\admin\logic;
 
 use app\admin\model\Limit;
 
+use think\Db;
 use think\Model;
 use think\Request;
 
@@ -25,7 +26,23 @@ class Leader extends Model
     public function checkLimit()
     {
         $request = Request::instance();
-        $limit=Limit::all();
+        $limit = Limit::all();
+    }
+
+    public function clearUpTypeName($typeName = 1)
+    {
+        $res = [];
+        for ($i = 1; $i < 4; $i++) {
+            if($typeName==$i){
+                $res[]=[
+                    'select'=>'true'
+                ];
+            }else{
+                $res[]=[
+                    'select'=>'false'
+                ];
+            }
+        }
     }
 
 }

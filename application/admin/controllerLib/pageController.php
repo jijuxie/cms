@@ -14,6 +14,6 @@ class pageController extends Controller
     {
         parent::__construct();
         //读取menu
-        $this->assign('menu',Config('menu'));
+//        $this->assign('menu',Config('menu'));
     }
 }
