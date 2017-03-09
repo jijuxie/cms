@@ -40,11 +40,10 @@ class Limit extends Model
             return '否';
         }
     }
-
     //翻译权限类型对应
     public function getTypeNameAttr($value)
     {
-        $name = [1 => '主父权限', 2 => '方法权限', 3 => '回调权限'];
+        $name = [0 => '主父权限', 1 => '方法权限', 2 => '回调权限'];
         return $name[$value];
     }
 }

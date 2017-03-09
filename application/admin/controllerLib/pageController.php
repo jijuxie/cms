@@ -12,8 +12,10 @@ class pageController extends Controller
 {
     public function __construct()
     {
+
         parent::__construct();
         //读取menu
-//        $this->assign('menu',Config('menu'));
+        $this->assign('menu',Config('menu'));
+
     }
 }

@@ -22,7 +22,6 @@ class Index extends Controller
             //正常进行
         } else {
             $this->error('你还没有登录', '/admin/login/index');
-            return false;
         }
     }
     public
